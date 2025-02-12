@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APRENDE +</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-400 to-blue-800 text-white flex flex-col min-h-screen"></body>
+    
+    <!-- Header -->
+    <header class="bg-blue-700 py-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-2xl md:text-3xl font-bold">APRENDE +</h1>
+            <!-- Menú para pantallas grandes -->
+            <nav class="hidden md:flex space-x-4">
+                <a href="#" class="hover:underline">Métodos</a>
+                <a href="#" class="hover:underline">Matrícula</a>
+                <a href="#" class="hover:underline">Cursos</a>
+                <a href="quienes-somos.html" class="hover:underline">¿Quiénes somos?</a>
+                <a href="#" class="hover:underline">Clases Online</a>
+                <a href="#" class="hover:underline">Clases Personalizadas</a>
+            </nav>
+        </div>
+        <!-- Menú móvil -->
+        <div class="md:hidden text-center mt-2">
+            <input type="checkbox" id="menu-toggle" class="hidden peer">
+            <label for="menu-toggle" class="block bg-blue-600 py-2 cursor-pointer peer-checked:bg-blue-800">☰ Menú</label>
+            <nav class="hidden peer-checked:block bg-blue-700 py-2">
+                <a href="#" class="block p-2 hover:bg-blue-600">Métodos estudiados</a>
+                <a href="#" class="block p-2 hover:bg-blue-600">Matrícula</a>
+                <a href="#" class="block p-2 hover:bg-blue-600">Cursos</a>
+                <a href="quienes-somos.html" class="hover:underline">¿Quiénes somos?</a>
+                <a href="#" class="block p-2 hover:bg-blue-600">Clases Online</a>
+                <a href="#" class="block p-2 hover:bg-blue-600">Clases Personalizadas</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center px-4 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold">Bienvenido a APRENDE +</h2>
+    </main>
+    
+    <!-- Logo -->
+    <div class="flex justify-center py-10">
+        <img src="logo.png" alt="Logo de la empresa" class="w-64 md:w-96">
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-blue-800 py-6 text-center text-sm md:text-base">
+        <p>Atención al Cliente | Términos y Condiciones | Política de Privacidad</p>
+        <p>&copy; 2024 APRENDE +. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
