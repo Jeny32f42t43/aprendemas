@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CASAPU</title>
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Archivo de estilos personalizado -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans">
+  <!-- Header -->
+  <header class="bg-white shadow" data-aos="fade" data-aos-duration="500">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="logo.png" alt="Logo CASAPU" class="h-12 w-12" />
+        <span class="text-2xl font-bold text-primary">Construcciones Casapu</span>
+      </div>
+      <nav class="space-x-6 hidden md:block">
+        <a href="#nosotros" class="nav-link">Quiénes Somos</a>
+        <a href="#servicios" class="nav-link">Qué Hacemos</a>
+        <a href="#proceso" class="nav-link">Nuestro Proceso</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sección Hero -->
+  <section class="section-bg-primary py-20 text-center" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Deja que tus sueños sean nuestro proyecto</h1>
+      <p class="text-lg mb-6">
+        Nos acompañan más de 20 años de experiencia en el sector. ¿Necesitas construir o reformar tu vivienda, incluso una piscina? Somos tu empresa adecuada. Estamos capacitados profesionalmente para ofrecer todos nuestros servicios, y te asesoraremos de la mejor forma posible. Estamos comprometidos a transformar cada idea en un proyecto exitoso.
+      </p>
+      <a href="#contacto" class="btn-inverse">Contáctanos</a>
+    </div>
+  </section>
+
+  <!-- Sección Quiénes Somos -->
+  <section id="nosotros" class="section-bg-white py-16" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="section-title">Quiénes Somos</h2>
+        <p class="mb-4">
+          ¡Hola! Nos presentamos: somos <strong>CONSTRUCCIONES CASAPU</strong> con más de 20 años de experiencia en el sector de la construcción.
+        </p>
+        <p>
+          Estamos especializados en reformas de todo tipo y nuevas edificaciones. Lideramos proyectos desde su concepción hasta su finalización, garantizando servicios de calidad y seguridad. Nuestra pasión es hacer realidad tus ideas y crear espacios que inspiren.
+        </p>
+      </div>
+      <img src="trabajador.jpeg" class="img-nosotros rounded shadow-lg" alt="Obra CASAPU" data-aos="zoom-in" />
+    </div>
+  </section>
+
+  <!-- Sección Qué Hacemos -->
+  <section id="servicios" class="section-bg-primary py-16" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="section-title text-center mb-12">Qué Hacemos</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card-service" data-aos="fade-up" data-aos-delay="100">
+          <img src="ejemplo.jpeg" alt="Construcción Residencial" class="card-img rounded" />
+          <h3>Construcción Residencial</h3>
+          <p>
+            Diseñamos y edificamos hogares modernos, funcionales y seguros, adaptados a tus necesidades.
+          </p>
+        </div>
+        <div class="card-service" data-aos="fade-up" data-aos-delay="200">
+          <img src="psicina.jpg" alt="Piscinas" class="card-img rounded" />
+          <h3>Piscinas</h3>
+          <p>
+            Diseñamos y construimos piscinas modernas y seguras, transformando tu espacio en un oasis personal. Disfruta de un ambiente refrescante y elegante en tu propio hogar.
+          </p>
+        </div>
+        <div class="card-service" data-aos="fade-up" data-aos-delay="300">
+          <img src="remodelaciones.jpeg" alt="Remodelaciones" class="card-img rounded" />
+          <h3>Remodelaciones</h3>
+          <p>
+            Transformamos tus ambientes con materiales de calidad, eficiencia y estilo. Realizamos reformas integrales, desde viviendas hasta piscinas, siempre con la garantía de un servicio profesional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Nuestro Proceso -->
+  <section id="proceso" class="section-bg-white py-16" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="section-title text-center mb-12">Nuestro Proceso de Trabajo</h2>
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="step-icon">1</div>
+          <h4 class="font-semibold text-lg mt-3">Asesoría</h4>
+          <p>Te escuchamos y entendemos tu proyecto desde el inicio.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="step-icon">2</div>
+          <h4 class="font-semibold text-lg mt-3">Planificación</h4>
+          <p>Organizamos cronogramas, recursos y materiales óptimos.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <div class="step-icon">3</div>
+          <h4 class="font-semibold text-lg mt-3">Construcción</h4>
+          <p>Ejecutamos con calidad, seguridad y eficiencia en cada paso.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="400">
+          <div class="step-icon">4</div>
+          <h4 class="font-semibold text-lg mt-3">Entrega</h4>
+          <p>Recibes el proyecto terminado y superamos tus expectativas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Contacto: Primero la información de contacto y debajo redes sociales -->
+  <section id="contacto" class="section-bg-primary py-16" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 space-y-10">
+      <!-- Información de Contacto -->
+      <div class="p-6" data-aos="fade-up">
+        <h3 class="text-lg font-semibold text-white mb-4">Contacta con nosotros</h3>
+        <p class="text-white mb-2">Teléfono: 666137875 / 722717807</p>
+        <p class="text-white mb-2">Correo: info@construccionescasapu.com</p>
+        <p class="text-white">¡No dudes en comunicarte! Te asesoramos sin ningún compromiso para que juntos hagamos realidad tu proyecto.</p>
+      </div>
+      <!-- Redes Sociales -->
+      <div class="p-6" data-aos="fade-up">
+        <h3 class="text-lg font-semibold text-white mb-4">Síguenos en nuestras redes sociales</h3>
+        <div class="flex space-x-6 justify-center">
+          <!-- Icono de Instagram usando Tailwind (clases para tamaño y color) -->
+          <a href="https://www.instagram.com/construcciones_casapu" target="_blank" class="text-white hover:text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 448 512">
+              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 
+              114.9-51.3 114.9-114.9S287.7 141 224.1 141zm0 189.6c-41.3 0-74.7-33.4-74.7-74.7 
+              0-41.3 33.4-74.7 74.7-74.7 41.3 0 74.7 33.4 74.7 74.7 
+              0 41.3-33.4 74.7-74.7 74.7zm146.4-194.3c0 14.9-12.1 27-27 27
+              -14.9 0-27-12.1-27-27 0-14.9 12.1-27 27-27 
+              14.9 0 27 12.1 27 27zm76.1 27.2c-1.7-35.7-9.9-67.3-36.2-93.5
+              -26.2-26.2-57.8-34.4-93.5-36.2-37-2.1-147.9-2.1-184.9 0
+              -35.7 1.7-67.3 9.9-93.5 36.2-26.2 26.2-34.4 57.8-36.2 93.5
+              -2.1 37-2.1 147.9 0 184.9 1.7 35.7 9.9 67.3 36.2 93.5
+              26.2 26.2 57.8 34.4 93.5 36.2 37 2.1 147.9 2.1 184.9 0
+              35.7-1.7 67.3-9.9 93.5-36.2 26.2-26.2 34.4-57.8 36.2-93.5
+              2.1-37 2.1-147.9 0-184.9zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6
+              -29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6
+              -11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1
+              c7.8-19.6 22.9-34.7 42.6-42.6 
+              29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9
+              c19.6 7.8 34.7 22.9 42.6 42.6
+              11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-4 border-t mt-8" data-aos="fade-up">
+    <p class="text-sm text-primary">&copy; 2025 Construcciones CASAPU. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>

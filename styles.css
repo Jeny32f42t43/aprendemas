@@ -1,0 +1,156 @@
+:root {
+  --primary: #cb0119;
+}
+
+/* Secciones alternadas */
+.section-bg-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.section-bg-white {
+  background-color: #f8f8f8; /* Blanco con un toque gris */
+  color: #1f2937; /* Gris muy oscuro para texto (Tailwind gray-800) */
+}
+
+/* Clases específicas */
+.text-primary {
+  color: var(--primary);
+}
+.bg-primary {
+  background-color: var(--primary);
+}
+.border-primary {
+  border-color: var(--primary);
+}
+
+/* Enlaces de navegación */
+.nav-link {
+  color: #1f2937;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-link:hover {
+  color: var(--primary);
+}
+
+/* Título marca (al lado del logo) */
+header .text-2xl {
+  color: var(--primary);
+}
+
+/* Títulos de sección */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Subtítulos o títulos de tarjetas */
+.card-service h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: var(--primary);
+}
+
+/* Textos en las tarjetas */
+.card-service p {
+  color: #1f2937; /* Gris oscuro para legibilidad */
+}
+
+/* Botones */
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.3s;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #a50013;
+}
+
+.btn-inverse {
+  background-color: #ffffff;
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.3s;
+  border: 1px solid var(--primary);
+}
+.btn-inverse:hover {
+  background-color: #f2f2f2;
+}
+
+/* Tarjetas */
+.card-service {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-service:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Imágenes de las tarjetas uniformes */
+.card-service img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Imagen de Quiénes Somos (más grande que las demás) */
+.img-nosotros {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  outline: none;
+  color: #1f2937;
+}
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(203, 1, 25, 0.2);
+}
+
+/* Iconos del proceso */
+.step-icon {
+  width: 3rem;
+  height: 3rem;
+  background: var(--primary);
+  color: #ffffff;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+/* Social Icons */
+.social-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--primary);
+  transition: transform 0.3s;
+}
+
+.social-icon:hover svg {
+  transform: scale(1.1);
+}
