@@ -154,3 +154,9 @@ header .text-2xl {
 .social-icon:hover svg {
   transform: scale(1.1);
 }
+
+.section-title-2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8f8f8;
+}
