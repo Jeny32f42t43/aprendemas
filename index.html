@@ -47,7 +47,7 @@
   <section id="nosotros" class="section-bg-white py-16" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="section-title">Quiénes Somos</h2> <br>
+        <h2 class="section-title">Quiénes Somos</h2>
         <p class="mb-4">
           ¡Hola! Nos presentamos: somos <strong>CONSTRUCCIONES CASAPU</strong> con más de 20 años de experiencia en el sector de la construcción.
         </p>
@@ -103,7 +103,7 @@
               <img src="trabajo2.jpg" alt="Trabajo 2" class="gallery-img rounded shadow-lg" />
             </div>
             <div class="gallery-item flex-shrink-0">
-              <img src="ejemplo.jpeg" alt="Trabajo 3" class="gallery-img rounded shadow-lg" />
+              <img src="trabajo3.jpg" alt="Trabajo 3" class="gallery-img rounded shadow-lg" />
             </div>
             <div class="gallery-item flex-shrink-0">
               <img src="trabajo4.jpg" alt="Trabajo 4" class="gallery-img rounded shadow-lg" />
@@ -183,12 +183,14 @@
           </div>
         </div>
         <p class="mb-4">
-          Envía tu currículum vitae a:
+          Envía tu currículum a:
         </p>
-        <a href="mailto:construccionescasapu@gmail.com" class="btn-primary inline-block">
-          <i class="fas fa-envelope mr-2"></i>
-          construccionescasapu@gmail.com
-        </a>
+        <div class="curriculum-container">
+          <a href="mailto:construccionescasapu@gmail.com" class="btn-primary inline-block">
+            <i class="fas fa-envelope mr-2"></i>
+            Enviar CV
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -283,89 +285,182 @@
       once: true,
     });
 
-    // Variables globales para la galería
+    // Variables de la galería
     let currentSlide = 0;
-    let slidesToShow = 3;
-    const totalSlides = 10;
-    let maxSlides = totalSlides - slidesToShow;
+    let isTransitioning = false;
 
-    // Función para ajustar responsive
-    function updateGallerySettings() {
-      slidesToShow = window.innerWidth <= 768 ? 1 : 3;
-      maxSlides = totalSlides - slidesToShow;
-      if (currentSlide > maxSlides) {
-        currentSlide = maxSlides;
+    function getSlideSettings() {
+      const width = window.innerWidth;
+      
+      if (width <= 640) {
+        // Móvil pequeño
+        return {
+          slidesToShow: 1,
+          slideWidth: width - 40, // 2rem padding total
+          totalSlides: 10
+        };
+      } else if (width <= 768) {
+        // Móvil medio
+        return {
+          slidesToShow: 1,
+          slideWidth: width - 48, // 3rem padding total
+          totalSlides: 10
+        };
+      } else {
+        // Desktop
+        return {
+          slidesToShow: 3,
+          slideWidth: 344,
+          totalSlides: 10
+        };
       }
     }
 
-    // Función principal para mover la galería
     function moveGallery(direction) {
+      if (isTransitioning) return;
+      
       const slider = document.getElementById('gallerySlider');
-      if (!slider) {
-        console.log('Slider no encontrado');
-        return;
-      }
+      if (!slider) return;
       
-      updateGallerySettings();
-      const slideWidth = window.innerWidth <= 768 ? 300 : 344;
+      const settings = getSlideSettings();
+      const maxSlides = settings.totalSlides - settings.slidesToShow;
       
+      isTransitioning = true;
       currentSlide += direction;
       
-      // Controlar límites
-      if (currentSlide < 0) {
-        currentSlide = 0;
-      } else if (currentSlide > maxSlides) {
-        currentSlide = maxSlides;
-      }
+      // Limitar dentro del rango
+      if (currentSlide < 0) currentSlide = 0;
+      if (currentSlide > maxSlides) currentSlide = maxSlides;
       
-      // Aplicar transformación
-      const translateX = -currentSlide * slideWidth;
+      // Aplicar transformación con centrado perfecto
+      const translateX = -currentSlide * (settings.slideWidth + (window.innerWidth <= 768 ? 16 : 24));
+      slider.style.transition = 'transform 0.3s ease';
       slider.style.transform = `translateX(${translateX}px)`;
       
-      console.log(`Moviendo a slide ${currentSlide}, translateX: ${translateX}px`);
+      console.log(`Slide: ${currentSlide}, Width: ${settings.slideWidth}, TranslateX: ${translateX}`);
+      
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 300);
     }
 
-    // Inicializar cuando el DOM esté listo
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM cargado, inicializando galería');
-      updateGallerySettings();
-      
-      // Verificar que existen los elementos
+    // Touch/swipe functionality simplificado para móvil
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let startTransform = 0;
+
+    function handleStart(clientX) {
       const slider = document.getElementById('gallerySlider');
-      const prevBtn = document.querySelector('.gallery-btn-prev');
-      const nextBtn = document.querySelector('.gallery-btn-next');
+      if (!slider || isTransitioning) return;
       
-      if (slider) {
-        console.log('Galería encontrada y lista');
+      isDragging = true;
+      startX = clientX;
+      currentX = clientX;
+      
+      // Obtener posición actual
+      const transform = slider.style.transform || 'translateX(0px)';
+      const match = transform.match(/-?\d+/);
+      startTransform = match ? parseInt(match[0]) : 0;
+      
+      slider.style.transition = 'none';
+    }
+
+    function handleMove(clientX) {
+      if (!isDragging) return;
+      
+      const slider = document.getElementById('gallerySlider');
+      if (!slider) return;
+      
+      currentX = clientX;
+      const deltaX = currentX - startX;
+      const newTransform = startTransform + deltaX;
+      
+      slider.style.transform = `translateX(${newTransform}px)`;
+    }
+
+    function handleEnd() {
+      if (!isDragging) return;
+      
+      const slider = document.getElementById('gallerySlider');
+      if (!slider) return;
+      
+      isDragging = false;
+      const deltaX = currentX - startX;
+      
+      // Si el desplazamiento es significativo, cambiar slide
+      if (Math.abs(deltaX) > 80) {
+        if (deltaX > 0) {
+          moveGallery(-1); // Deslizar hacia la izquierda
+        } else {
+          moveGallery(1);  // Deslizar hacia la derecha
+        }
       } else {
-        console.error('Galería no encontrada');
+        // Volver a la posición correcta
+        const settings = getSlideSettings();
+        const translateX = -currentSlide * (settings.slideWidth + (window.innerWidth <= 768 ? 16 : 24));
+        slider.style.transition = 'transform 0.3s ease';
+        slider.style.transform = `translateX(${translateX}px)`;
       }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryContainer = document.querySelector('.gallery-container');
       
-      if (prevBtn) {
-        console.log('Botón anterior encontrado');
-      }
-      
-      if (nextBtn) {
-        console.log('Botón siguiente encontrado');
+      if (galleryContainer) {
+        // Touch events para móvil
+        galleryContainer.addEventListener('touchstart', (e) => {
+          handleStart(e.touches[0].clientX);
+        }, { passive: true });
+        
+        galleryContainer.addEventListener('touchmove', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+            handleMove(e.touches[0].clientX);
+          }
+        });
+        
+        galleryContainer.addEventListener('touchend', handleEnd, { passive: true });
+        
+        // Mouse events para desktop
+        if (window.innerWidth > 768) {
+          galleryContainer.addEventListener('mousedown', (e) => {
+            handleStart(e.clientX);
+          });
+          
+          galleryContainer.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              e.preventDefault();
+              handleMove(e.clientX);
+            }
+          });
+          
+          galleryContainer.addEventListener('mouseup', handleEnd);
+          galleryContainer.addEventListener('mouseleave', handleEnd);
+        }
       }
     });
 
     // Ajustar en resize
     window.addEventListener('resize', function() {
-      updateGallerySettings();
       const slider = document.getElementById('gallerySlider');
       if (slider) {
-        const slideWidth = window.innerWidth <= 768 ? 300 : 344;
-        const translateX = -currentSlide * slideWidth;
+        const settings = getSlideSettings();
+        const maxSlides = settings.totalSlides - settings.slidesToShow;
+        
+        if (currentSlide > maxSlides) {
+          currentSlide = maxSlides;
+        }
+        
+        const translateX = -currentSlide * (settings.slideWidth + (window.innerWidth <= 768 ? 16 : 24));
         slider.style.transform = `translateX(${translateX}px)`;
       }
     });
 
-    // Smooth scrolling para enlaces de navegación
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           target.scrollIntoView({
