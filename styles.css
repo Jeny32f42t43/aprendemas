@@ -239,23 +239,26 @@ header .text-2xl {
   transform: scale(1.1);
 }
 
-/* Galería de trabajos */
+/* Galería de trabajos - Arreglo para GitHub Pages */
 .gallery-container {
   position: relative;
   padding: 0 3rem;
   max-width: 100%;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .gallery-slider {
   display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 .gallery-item {
   width: 320px;
   margin-right: 24px;
   flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .gallery-img {
@@ -266,6 +269,8 @@ header .text-2xl {
   box-shadow: var(--shadow-lg);
   transition: var(--transition);
   border: 3px solid #ffffff;
+  display: block;
+  pointer-events: none;
 }
 
 .gallery-img:hover {
@@ -289,12 +294,17 @@ header .text-2xl {
   z-index: 10;
   box-shadow: var(--shadow-primary);
   border: 3px solid #ffffff;
+  outline: none;
 }
 
 .gallery-btn:hover {
   background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 12px 30px rgba(203, 1, 25, 0.4);
+}
+
+.gallery-btn:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 .gallery-btn-prev {
