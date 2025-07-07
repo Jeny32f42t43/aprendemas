@@ -274,24 +274,40 @@
   </footer>
 
   <!-- AOS JS -->
+  <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
+    // Inicializar AOS
     AOS.init({
       duration: 1000,
       once: true,
     });
 
-    // Galería de trabajos
+    // Variables globales para la galería
     let currentSlide = 0;
-    const slidesToShow = window.innerWidth <= 768 ? 1 : 3; // Responsive
-    const totalSlides = 10; // Total de imágenes
-    const maxSlides = totalSlides - slidesToShow;
+    let slidesToShow = 3;
+    const totalSlides = 10;
+    let maxSlides = totalSlides - slidesToShow;
 
+    // Función para ajustar responsive
+    function updateGallerySettings() {
+      slidesToShow = window.innerWidth <= 768 ? 1 : 3;
+      maxSlides = totalSlides - slidesToShow;
+      if (currentSlide > maxSlides) {
+        currentSlide = maxSlides;
+      }
+    }
+
+    // Función principal para mover la galería
     function moveGallery(direction) {
       const slider = document.getElementById('gallerySlider');
-      if (!slider) return;
+      if (!slider) {
+        console.log('Slider no encontrado');
+        return;
+      }
       
-      const slideWidth = window.innerWidth <= 768 ? 300 : 344; // 320px + 24px margin
+      updateGallerySettings();
+      const slideWidth = window.innerWidth <= 768 ? 300 : 344;
       
       currentSlide += direction;
       
@@ -305,7 +321,45 @@
       // Aplicar transformación
       const translateX = -currentSlide * slideWidth;
       slider.style.transform = `translateX(${translateX}px)`;
+      
+      console.log(`Moviendo a slide ${currentSlide}, translateX: ${translateX}px`);
     }
+
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM cargado, inicializando galería');
+      updateGallerySettings();
+      
+      // Verificar que existen los elementos
+      const slider = document.getElementById('gallerySlider');
+      const prevBtn = document.querySelector('.gallery-btn-prev');
+      const nextBtn = document.querySelector('.gallery-btn-next');
+      
+      if (slider) {
+        console.log('Galería encontrada y lista');
+      } else {
+        console.error('Galería no encontrada');
+      }
+      
+      if (prevBtn) {
+        console.log('Botón anterior encontrado');
+      }
+      
+      if (nextBtn) {
+        console.log('Botón siguiente encontrado');
+      }
+    });
+
+    // Ajustar en resize
+    window.addEventListener('resize', function() {
+      updateGallerySettings();
+      const slider = document.getElementById('gallerySlider');
+      if (slider) {
+        const slideWidth = window.innerWidth <= 768 ? 300 : 344;
+        const translateX = -currentSlide * slideWidth;
+        slider.style.transform = `translateX(${translateX}px)`;
+      }
+    });
 
     // Smooth scrolling para enlaces de navegación
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
